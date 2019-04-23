@@ -27,6 +27,9 @@ public class CarrosController {
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<CarroDTO> carro = service.getCarroById(id);
 
+        Carro c = null;
+        c.setId(1L);
+
         return carro
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
