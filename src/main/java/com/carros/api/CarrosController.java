@@ -25,7 +25,7 @@ public class CarrosController {
 
     @GetMapping("/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
-        Optional<Carro> carro = service.getCarroById(id);
+        Optional<CarroDTO> carro = service.getCarroById(id);
 
         return carro
                 .map(ResponseEntity::ok)
