@@ -25,12 +25,8 @@ public class CarrosAPITest {
     @Autowired
     protected TestRestTemplate rest;
 
-    @Autowired
-    private CarroService service;
-
     private ResponseEntity<CarroDTO> getCarro(String url) {
-        return
-                rest.getForEntity(url, CarroDTO.class);
+        return rest.getForEntity(url, CarroDTO.class);
     }
 
     private ResponseEntity<List<CarroDTO>> getCarros(String url) {
