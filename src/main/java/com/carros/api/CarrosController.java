@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -45,6 +47,7 @@ public class CarrosController {
     }
 
     @PostMapping
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity post(@RequestBody Carro carro) {
 
         try {
@@ -63,6 +66,7 @@ public class CarrosController {
     }
 
     @PutMapping("/{id}")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity put(@PathVariable("id") Long id,@RequestBody Carro carro) {
 
         carro.setId(id);
@@ -75,6 +79,7 @@ public class CarrosController {
     }
 
     @DeleteMapping("/{id}")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity delete(@PathVariable("id") Long id) {
         boolean ok = service.delete(id);
 
