@@ -10,6 +10,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
+//https://www.baeldung.com/spring-security-method-security
+//@EnableGlobalMethodSecurity(prePostEnabled = true,
+//        securedEnabled = true,
+//        jsr250Enabled = true)
 public class BasicConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
@@ -18,11 +22,9 @@ public class BasicConfiguration extends WebSecurityConfigurerAdapter {
         auth
                 .inMemoryAuthentication()
                 .passwordEncoder(new BCryptPasswordEncoder())
-                .withUser("user").password("$2a$10$j4cTpMvrvbZi3MggidCuoeFl92Ql95KWPJRmO8zcHdC6GDzBYQJ92")
-                .roles("USER")
+                .withUser("user").password("$2a$10$j4cTpMvrvbZi3MggidCuoeFl92Ql95KWPJRmO8zcHdC6GDzBYQJ92").roles("USER")
                 .and()
-                .withUser("admin").password("$2a$10$AxQ/Gl22aSsFaqCVouwWheubK2NuZxPEoNN/2RP7JP8dhst4sbRdu")
-                .roles("ADMIN");
+                .withUser("admin").password("$2a$10$AxQ/Gl22aSsFaqCVouwWheubK2NuZxPEoNN/2RP7JP8dhst4sbRdu").roles("USER", "ADMIN");
     }
 
     @Override

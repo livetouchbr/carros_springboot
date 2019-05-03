@@ -101,4 +101,10 @@ public class CarrosAPITest {
         ResponseEntity response = getCarro("/api/v1/carros/1100");
         assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
     }
+
+    @Test
+    public void testDelete() {
+
+        rest.delete("/api/v1/carros/1");
+    }
 }
